@@ -20,6 +20,8 @@ by TraumFlug
 #include <cmath>
 #include <cstdint>
 #include <cstdio>
+#include <cstdlib>
+#include <cstring>
 
 #include "lv2/lv2plug.in/ns/lv2core/lv2.h"
 #define URI "urn:traumflug:lunar:effect:tfcho"
@@ -408,3 +410,5 @@ LV2_SYMBOL_EXPORT const LV2_Descriptor* lv2_descriptor (uint32_t index) {
         return 0;
     }
 }
+
+#include "ladspa_wrapper.h"
