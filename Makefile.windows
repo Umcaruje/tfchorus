@@ -1,0 +1,12 @@
+
+stuff = -std=c++11 -Wall -Werror `pkg-config lv2 --cflags` -shared -DPIC src/tfcho.cpp -o
+
+all: win32ladspa win64ladspa
+
+win32ladspa:
+	mkdir -p build/win32
+	i686-w64-mingw32-g++ -DBUILD_LADSPA $(stuff) build/win32/tfcho.dll
+
+win64ladspa:
+	mkdir -p build/win64
+	x86_64-w64-mingw32-g++ -DBUILD_LADSPA $(stuff) build/win64/tfcho.dll
