@@ -76,7 +76,7 @@ static const LADSPA_Descriptor ladspadescriptor = {
     "tfcho",
     0,
     "TF Chorus",
-    "original code by Traumflug, ported by grejppi",
+    "original code by TraumFlug, ported by grejppi",
     NULL,
     NUM_PORTS,
     pdescs,
