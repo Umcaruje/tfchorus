@@ -41,10 +41,10 @@ struct tfcho {
     //history sample buffers dry & wet
     unsigned int buf_size;   //size of the 4 buffers
     unsigned int buf_wrap;   //mask for wraparound
-    float *dbufl;            //dry input buffers
-    float *dbufr;
-    float *wbufl;            //wet output buffers for feedback
-    float *wbufr;
+    float* dbufl;            //dry input buffers
+    float* dbufr;
+    float* wbufl;            //wet output buffers for feedback
+    float* wbufr;
     unsigned int bpos;       //buffer(s) write position
 
     //parms constant to process_stereo
@@ -127,47 +127,6 @@ struct tfcho {
             delete[] wbufr;
         }
     }
-
-/*
-    void process_events () {
-        int lfo = 0;
-        if (globals->drywet) {
-            wet = *globals->drywet;
-            dry = 1.0 - (abs (*globals->drywet));
-        }
-
-        if (globals->feedback) {
-            feedback = *globals->feedback;
-        }
-
-        if (globals->minmod) {
-            minmod = (smpfreq * 0.001) * (*globals->minmod);
-            lfo = 1;
-        }
-
-        if (globals->depth) {
-            depth = (smpfreq * 0.001) * (*globals->depth);
-            lfo = 1;
-        }
-
-        if (globals->rate) {
-            cyclen = (1 / (*globals->rate)) * smpfreq;
-            cycinc = 1.0 / cyclen;
-        }
-
-        if (globals->sphase) {
-            sphase = (*globals->sphase) / 360.0;
-        }
-
-        if (lfo) {
-            if (depth > minmod) {
-                mrang = depth - minmod;
-            } else {
-                mrang = 0.0;
-            }
-        }
-    }
-*/
 
     //pseudo sine by quadratics...not because it's faster, but because is is "funny":
     //
@@ -381,8 +340,8 @@ static void deactivate (LV2_Handle instance) {
 
 static void cleanup (LV2_Handle instance) {
     TFChorus* self = (TFChorus*) instance;
-    delete self->instance;
     self->instance->exit ();
+    delete self->instance;
     delete self;
 }
 
